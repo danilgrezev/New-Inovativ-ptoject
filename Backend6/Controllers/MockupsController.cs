@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend6.Controllers
 {
-    public class MockupsController : Controller
+    public class MockupsInnoController : Controller
     {
         public IActionResult Index()
         {
