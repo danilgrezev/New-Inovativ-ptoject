@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Backend6.Data;
 using Backend6.Models;
-using Backend6.Services;
+//using Backend6.Services;
 using Microsoft.AspNetCore.Identity;
 
 namespace Backend6
@@ -36,7 +36,7 @@ namespace Backend6
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddScoped<IUserPermissionsService, UserPermissionsService>();
+            //services.AddScoped<IUserPermissionsService, UserPermissionsService>();
 
             services.AddMvc();
         }
@@ -67,7 +67,7 @@ namespace Backend6
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Posts}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}");
             });
         }
     }
