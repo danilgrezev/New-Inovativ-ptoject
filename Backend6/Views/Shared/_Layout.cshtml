@@ -26,36 +26,36 @@
             <ul class="navbar-nav ml-1">
                 @if (User.IsInRole(ApplicationRoles.Client))
                 {
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Создать задание</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Мои задания</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Создать задание</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Мои задания</a>
+                    </li>
                 }
                 @if (User.IsInRole(ApplicationRoles.Employee))
                 {
-                <li class="nav-item text-right">
-                    <a class="nav-link" href="#">Список заданий</a>
-                </li>
+                    <li class="nav-item text-right">
+                        <a class="nav-link" href="#">Список заданий</a>
+                    </li>
                 }
             </ul>
             <ul class="navbar-nav mr-4">
                 @if (User.Identity.IsAuthenticated)
                 {
-                <li class="nav-item mr-4">
-                    <span class="navbar-text text-light">Привет, Вася</span>
-                </li>
+                    <li class="nav-item mr-4">
+                        <span class="navbar-text text-light">Привет, Вася</span>
+                    </li>
                 }
-        else
-        {
-        <li class="nav-item">
-            <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-controller="Account" asp-action="Register">Зарегистрироваться</a>
-        </li>
-        }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Register">Зарегистрироваться</a>
+                    </li>
+                }
             </ul>
         </div>
     </nav>

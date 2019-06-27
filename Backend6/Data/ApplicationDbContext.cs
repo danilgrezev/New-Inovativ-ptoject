@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Backend6.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
+using DoNothing.Models;
 
 namespace Backend6.Data
 {
@@ -24,5 +25,8 @@ namespace Backend6.Data
 
            
         }
+
+
+        public DbSet<UserType> UserTypes { get; set; }
     }
 }

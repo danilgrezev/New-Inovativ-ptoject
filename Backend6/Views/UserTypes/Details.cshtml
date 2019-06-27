@@ -1,19 +1,20 @@
-@model Backend6.Models.PostCategory
+﻿@model DoNothing.Models.UserType
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Post category</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>UserType</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Type)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Type)
         </dd>
     </dl>
 </div>
