@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Backend6.Models;
+using DoNothing.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Backend6.Models;
-using Microsoft.EntityFrameworkCore.Metadata;
-using DoNothing.Models;
 
 namespace Backend6.Data
 {
@@ -17,16 +12,15 @@ namespace Backend6.Data
         {
         }
 
-       
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-           
         }
 
 
         public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<TaskType> TaskTypes { get; set; }
+        public DbSet<Geo> Geos { get; set; }
+        public DbSet<Card> Cards { get; set; }
     }
 }

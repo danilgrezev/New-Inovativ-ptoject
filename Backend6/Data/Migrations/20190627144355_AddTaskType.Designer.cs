@@ -11,9 +11,10 @@ using System;
 namespace Backend6.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190627144355_AddTaskType")]
+    partial class AddTaskType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,44 +70,6 @@ namespace Backend6.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("DoNothing.Models.Card", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CVV")
-                        .IsRequired();
-
-                    b.Property<string>("Code")
-                        .IsRequired();
-
-                    b.Property<string>("Date")
-                        .IsRequired();
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cards");
-                });
-
-            modelBuilder.Entity("DoNothing.Models.Geo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Country");
-
-                    b.Property<string>("District");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Geos");
                 });
 
             modelBuilder.Entity("DoNothing.Models.TaskType", b =>
