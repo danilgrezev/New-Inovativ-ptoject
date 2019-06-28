@@ -4,6 +4,10 @@
     <UserSecretsId>aspnet-Backend6-4fd1b34e-3551-4869-9119-f7b6184396dc</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20190628083738_My316Migration.cs" />
+    <Compile Remove="Data\Migrations\20190628083738_My316Migration.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />

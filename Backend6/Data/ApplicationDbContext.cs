@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Backend6.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
+using DoNothing.Models;
 
 namespace Backend6.Data
 {
@@ -21,8 +22,22 @@ namespace Backend6.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.Entity<ApplicationUserTaskType>().HasKey(x => new { x.ApplicationUserId, x.TaskTypeId });
 
-           
         }
+
+
+        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<TaskType> TaskTypes { get; set; }
+        public DbSet<Geo> Geos { get; set; }
+        public DbSet<Card> Cards { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationUserTaskType> ApplicationUserTaskTypes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Insurance> Insurances { get; set; }
+
+        public DbSet<MyTask> Task { get; set; }
     }
 }
