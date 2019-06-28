@@ -11,6 +11,6 @@ namespace DoNothing.Models
         public Int32 Id { get; set; }
         public String Type { get; set; }
 
-        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
+        public ICollection<ApplicationUserTaskType> ApplicationUsers { get; set; }
     }
 }

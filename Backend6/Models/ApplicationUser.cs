@@ -24,7 +24,8 @@ namespace Backend6.Models
         public ICollection<Card> Cards { get; set; }
 
         //many to many
-        public ICollection<TaskType> TaskTypes { get; set; }
+        public ICollection<ApplicationUserTaskType> TaskTypes { get; set; }
+
 
     }
 }
