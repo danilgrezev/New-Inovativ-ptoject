@@ -6,6 +6,26 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20190627135718_AddUserType.cs" />
     <Compile Remove="Data\Migrations\20190627135718_AddUserType.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190627144355_AddTaskType.cs" />
+    <Compile Remove="Data\Migrations\20190627144355_AddTaskType.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190627145631_AddGeo.cs" />
+    <Compile Remove="Data\Migrations\20190627145631_AddGeo.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190627150924_AddCard.cs" />
+    <Compile Remove="Data\Migrations\20190627150924_AddCard.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190628065216_AddUser.cs" />
+    <Compile Remove="Data\Migrations\20190628065216_AddUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190628065802_AddComment.cs" />
+    <Compile Remove="Data\Migrations\20190628065802_AddComment.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190628070913_AddInsurances.cs" />
+    <Compile Remove="Data\Migrations\20190628070913_AddInsurances.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190628071208_RenameComment.cs" />
+    <Compile Remove="Data\Migrations\20190628071208_RenameComment.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190628073749_AddTask.cs" />
+    <Compile Remove="Data\Migrations\20190628073749_AddTask.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190628074952_RenameMyTask.cs" />
+    <Compile Remove="Data\Migrations\20190628074952_RenameMyTask.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190628075515_MyFMigration.cs" />
+    <Compile Remove="Data\Migrations\20190628075515_MyFMigration.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
