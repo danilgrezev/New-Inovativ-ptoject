@@ -11,9 +11,10 @@ using System;
 namespace Backend6.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190628070913_AddInsurances")]
+    partial class AddInsurances
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,23 +134,23 @@ namespace Backend6.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("ClientId");
+
+                    b.Property<string>("ClientId1");
+
                     b.Property<DateTime>("DateTime");
 
-                    b.Property<int>("RecipientId");
+                    b.Property<int>("EmployeeId");
 
-                    b.Property<string>("RecipientId1");
-
-                    b.Property<int>("SenderId");
-
-                    b.Property<string>("SenderId1");
+                    b.Property<string>("EmployeeId1");
 
                     b.Property<string>("Text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipientId1");
+                    b.HasIndex("ClientId1");
 
-                    b.HasIndex("SenderId1");
+                    b.HasIndex("EmployeeId1");
 
                     b.ToTable("Comments");
                 });
@@ -183,52 +184,6 @@ namespace Backend6.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Insurances");
-                });
-
-            modelBuilder.Entity("DoNothing.Models.Task", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("ApplyingTime");
-
-                    b.Property<int>("ClientId");
-
-                    b.Property<string>("ClientId1");
-
-                    b.Property<int>("EmployeeId");
-
-                    b.Property<string>("EmployeeId1");
-
-                    b.Property<DateTime>("ExecutionTime");
-
-                    b.Property<int>("GeoId");
-
-                    b.Property<string>("Header");
-
-                    b.Property<int>("InsuranceId");
-
-                    b.Property<int>("Priority");
-
-                    b.Property<string>("Status");
-
-                    b.Property<int>("TaskTypeId");
-
-                    b.Property<string>("Text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId1");
-
-                    b.HasIndex("EmployeeId1");
-
-                    b.HasIndex("GeoId");
-
-                    b.HasIndex("InsuranceId");
-
-                    b.HasIndex("TaskTypeId");
-
-                    b.ToTable("Task");
                 });
 
             modelBuilder.Entity("DoNothing.Models.TaskType", b =>
@@ -397,17 +352,6 @@ namespace Backend6.Data.Migrations
 
             modelBuilder.Entity("DoNothing.Models.Comment", b =>
                 {
-                    b.HasOne("Backend6.Models.ApplicationUser", "Recipient")
-                        .WithMany()
-                        .HasForeignKey("RecipientId1");
-
-                    b.HasOne("Backend6.Models.ApplicationUser", "Sender")
-                        .WithMany()
-                        .HasForeignKey("SenderId1");
-                });
-
-            modelBuilder.Entity("DoNothing.Models.Task", b =>
-                {
                     b.HasOne("Backend6.Models.ApplicationUser", "Client")
                         .WithMany()
                         .HasForeignKey("ClientId1");
@@ -415,21 +359,6 @@ namespace Backend6.Data.Migrations
                     b.HasOne("Backend6.Models.ApplicationUser", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId1");
-
-                    b.HasOne("DoNothing.Models.Geo", "Geo")
-                        .WithMany("Tasks")
-                        .HasForeignKey("GeoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DoNothing.Models.Insurance", "Insurance")
-                        .WithMany()
-                        .HasForeignKey("InsuranceId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DoNothing.Models.TaskType", "TaskType")
-                        .WithMany()
-                        .HasForeignKey("TaskTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -29,5 +29,8 @@ namespace Backend6.Data
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationUserTaskType> ApplicationUserTaskTypes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Insurance> Insurances { get; set; }
     }
 }
