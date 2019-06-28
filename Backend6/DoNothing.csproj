@@ -6,6 +6,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20190627135718_AddUserType.cs" />
     <Compile Remove="Data\Migrations\20190627135718_AddUserType.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190627141602_AddUserType.cs" />
+    <Compile Remove="Data\Migrations\20190627141602_AddUserType.Designer.cs" />
     <Compile Remove="Data\Migrations\20190627144355_AddTaskType.cs" />
     <Compile Remove="Data\Migrations\20190627144355_AddTaskType.Designer.cs" />
     <Compile Remove="Data\Migrations\20190627145631_AddGeo.cs" />
