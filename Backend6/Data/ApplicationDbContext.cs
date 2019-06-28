@@ -32,5 +32,7 @@ namespace Backend6.Data
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Insurance> Insurances { get; set; }
+
+        public DbSet<MyTask> Task { get; set; }
     }
 }

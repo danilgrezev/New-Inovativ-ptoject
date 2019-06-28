@@ -15,6 +15,6 @@ namespace DoNothing.Models
 
         public ICollection<ApplicationUser> ApplicationUsers { get; set; }
 
-        public ICollection<Task> Tasks { get; set; }
+        public ICollection<MyTask> MyTasks { get; set; }
     }
 }

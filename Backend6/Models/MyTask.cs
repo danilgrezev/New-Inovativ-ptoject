@@ -6,7 +6,7 @@ using Backend6.Models;
 
 namespace DoNothing.Models
 {
-    public class Task
+    public class MyTask
     {
         public Int32 Id { get; set; }
         public String Header { get; set; }
