@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Backend5</title>
+    <title>@ViewData["Title"] - DoNothing</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,31 +17,54 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Backend5</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    @*<li><a asp-area="" asp-controller="Hospitals" asp-action="Index">Hospitals</a></li>
-                    <li><a asp-area="" asp-controller="Labs" asp-action="Index">Labs</a></li>*@
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">DoNothing</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+            <ul class="navbar-nav ml-1">
+                @*@if (User.IsInRole())
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Создать задание</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Мои задания</a>
+                    </li>
+                }
+                @if (User.IsInRole(ApplicationRoles.Employee))
+                {*@
+                    <li class="nav-item text-right">
+                        <a class="nav-link" href="#">Список заданий</a>
+                    </li>
+                @*}*@
+            </ul>
+            <ul class="navbar-nav mr-4">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item mr-4">
+                        <span class="navbar-text text-light">Привет, Вася</span>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Register">Зарегистрироваться</a>
+                    </li>
+                }
+            </ul>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - Backend5</p>
+        <footer class="footer container">
+            <hr />
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
         </footer>
     </div>
 
