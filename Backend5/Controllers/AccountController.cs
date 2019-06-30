@@ -81,21 +81,23 @@ namespace Backend5.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var d = 3;
             if (this.ModelState.IsValid)
             {
-                /*  var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    Email=model.Email,
+                    UserName=model.Name,
+                    UserTypeId = model.Type
+                };
                   var result = await this.userManager.CreateAsync(user, model.Password);
                   if (result.Succeeded)
                   {
                       await this.signInManager.SignInAsync(user, isPersistent: false);
-                      return this.RedirectToLocal(returnUrl);
-                  }*/
+                      return this.Redirect("/Home/Index");
+                }
 
-                //  this.AddErrors(result);
+                this.AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
             return this.View(model);
         }
 
