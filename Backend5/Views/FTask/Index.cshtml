@@ -4,23 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 
 @foreach (var i in Model.L)
 {
-    <div class="jumbotron ti">
-        <h1>@i.Header</h1>
+    <div class="jumbotron ti col-8">
+        <h3>@i.Header</h3>
         <hr />
         <div class="row">
             <div class="col">
                 <form asp-controller="FTask" asp-action="GetOne">
-                    <input asp-for="@Model.Id" value="@i.Id"/>
+                    <input type="hidden" asp-for="@Model.Id" value="@i.Id"/>
                     <button type="submit" class="btn btn-lg btn-primary">Подробно</button>
                 </form>
               
             </div>
             <div class="col text-right pt-2 pr-3">
-                <h3>Цена: @i.Price рублей</h3>
+                <h5>Цена: @i.Price рублей</h5>
             </div>
         </div>
     </div>

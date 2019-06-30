@@ -34,7 +34,6 @@ namespace Backend5.Controllers
             var m = await this._context.Task
                 .Include(x => x.Geo)
                 .Include(x => x.Client).ToListAsync();
-            var d = 4;
             return View(new TaskOneIdViewModel() {
                 L=m
             });
@@ -45,7 +44,6 @@ namespace Backend5.Controllers
             var m = await this._context.Task
                 .Include(x => x.Geo)
                 .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id== model.Id);
-            var d = 4;
             return View(m);
         }
 
@@ -58,11 +56,10 @@ namespace Backend5.Controllers
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
 
             m.EmployeeId = user.Id;
-            _context.Update(model);
+            _context.Update(m);
             await _context.SaveChangesAsync();
 
-            var d = 4;
-            return View(m);
+            return this.Redirect("/Home/Index");
         }
     }
 }
