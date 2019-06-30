@@ -18,5 +18,7 @@ namespace Backend5.Models
         public ApplicationUser Recipient { get; set; }
         public Int32 RecipientId { get; set; }
 
+
+      
     }
 }

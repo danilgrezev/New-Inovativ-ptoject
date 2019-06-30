@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend5.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend5.Data
@@ -22,7 +23,7 @@ namespace Backend5.Data
 
 
             builder.Entity<ApplicationUserTaskType>().HasKey(x => new { x.ApplicationUserId, x.TaskTypeId });
-
+            builder.Entity<IdentityUserRole<string>>().HasKey(p => new { p.UserId, p.RoleId });
         }
 
 
@@ -38,5 +39,13 @@ namespace Backend5.Data
         public DbSet<Insurance> Insurances { get; set; }
 
         public DbSet<MyTask> Task { get; set; }
+
+        public DbSet<IdentityUserClaim<String>> IdentityUserClaims { get; set; }
+        
+      public DbSet<IdentityUserRole<String>> IdentityUserRoles { get; set; }
+        public DbSet<IdentityRole> IdentityRoles { get; set; }
+
+
+
     }
 }

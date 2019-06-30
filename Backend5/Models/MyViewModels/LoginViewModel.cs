@@ -7,5 +7,7 @@ namespace Backend5.Models.MyViewModels
 {
     public class LoginViewModel
     {
+        public String UserName { get; set; }
+        public String Password { get; set; }
     }
 }

@@ -40,27 +40,25 @@ namespace Backend5.Controllers
 
         // POST: /Account/Login
         [HttpPost]
-
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, String returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            this.ViewData["ReturnUrl"] = returnUrl;
             if (this.ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                /*   var result = await this.signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                   var result = await this.signInManager.PasswordSignInAsync(model.UserName, model.Password, true, lockoutOnFailure: false);
                    if (result.Succeeded)
                    {
-                       return this.RedirectToLocal(returnUrl);
-                   }
+                       return this.Redirect("/Home/Index");
+                }
 
                    if (result.IsLockedOut)
                    {
                        return this.View("Lockout");
                    }
 
-                   this.ModelState.AddModelError(String.Empty, "Invalid login attempt.");*/
+                   this.ModelState.AddModelError(String.Empty, "Invalid login attempt.");
                 return this.View(model);
             }
 
@@ -86,12 +84,14 @@ namespace Backend5.Controllers
                 var user = new ApplicationUser {
                     Email=model.Email,
                     UserName=model.Name,
-                    UserTypeId = model.Type
+                    UserTypeId = model.Type,
+                    Rating = 1,
+                    GeoId = 1
                 };
                   var result = await this.userManager.CreateAsync(user, model.Password);
                   if (result.Succeeded)
                   {
-                      await this.signInManager.SignInAsync(user, isPersistent: false);
+                      //await this.signInManager.SignInAsync(user, isPersistent: false);
                       return this.Redirect("/Home/Index");
                 }
 

@@ -10,6 +10,8 @@ namespace Backend5.Models
     public class ApplicationUser : IdentityUser
     {
         //Email Password уже есть
+        // public Int32 Id { get; set; }
+      //  public Guid Id { get; set; }
 
         public Int32 Rating { get; set; }
         public String Status { get; set; }
