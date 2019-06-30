@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DoNothing</title>
+    <title>@ViewData["Title"] - MeDo</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,7 +26,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav ml-1">
-                @if (User.IsInRole(ApplicationRoles.Client))
+                @if (true)
                 {
                     <li class="nav-item">
                         <a class="nav-link" href="#">Создать задание</a>
@@ -35,10 +35,10 @@
                         <a class="nav-link" href="#">Мои задания</a>
                     </li>
                 }
-                @if (User.IsInRole(ApplicationRoles.Employee))
+                @if (true)
                 {
                     <li class="nav-item text-right">
-                        <a class="nav-link" href="#">Список заданий</a>
+                        <a class="nav-link" asp-controller="FTask" asp-action="Index">Список заданий</a>
                     </li>
                 }
             </ul>
@@ -46,7 +46,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item mr-4">
-                        <span class="navbar-text text-light">Привет, Вася</span>
+                        <span class="navbar-text text-light">@User.Identity.Name</span>
                     </li>
                 }
                 else

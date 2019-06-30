@@ -87,12 +87,14 @@ namespace Backend5.Controllers
                     UserTypeId = model.Type,
                     Rating = 1,
                     GeoId = 1
+                    
                 };
                   var result = await this.userManager.CreateAsync(user, model.Password);
                   if (result.Succeeded)
                   {
-                      //await this.signInManager.SignInAsync(user, isPersistent: false);
-                      return this.Redirect("/Home/Index");
+                  //  await this.userManager.AddToRoleAsync(user, "Client");
+                  //  await this.signInManager.SignInAsync(user, isPersistent: false);
+                    return this.Redirect("/Home/Index");
                 }
 
                 this.AddErrors(result);

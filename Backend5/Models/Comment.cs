@@ -13,10 +13,10 @@ namespace Backend5.Models
         public DateTime DateTime { get; set; }
 
         public ApplicationUser Sender { get; set; }
-        public Int32 SenderId { get; set; }
+        public String SenderId { get; set; }
 
         public ApplicationUser Recipient { get; set; }
-        public Int32 RecipientId { get; set; }
+        public String RecipientId { get; set; }
 
 
       

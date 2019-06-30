@@ -22,10 +22,10 @@ namespace Backend5.Models
         public Int32 TaskTypeId { get; set; }
 
         public ApplicationUser Client { get; set; }
-        public Int32 ClientId { get; set; }
+        public String ClientId { get; set; }
 
         public ApplicationUser Employee { get; set; }
-        public Int32 EmployeeId { get; set; }
+        public String EmployeeId { get; set; }
 
         public Geo Geo { get; set; }
         public Int32 GeoId { get; set; }
