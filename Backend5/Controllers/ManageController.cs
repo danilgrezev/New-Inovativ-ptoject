@@ -42,8 +42,8 @@ namespace Backend5.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(ManageMessageId? message = null)
         {
-            var applicationDbContext = _context.ApplicationUsers
-                .Include(f => f.Geo);
+            var applicationDbContext = _context.Cards
+                .Include(f => f.ApplicationUser);
 
             this.ViewData["StatusMessage"] =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
@@ -56,7 +56,7 @@ namespace Backend5.Controllers
                 return this.View("Error");
             }
 
-            return this.View(/*await applicationDbContext.ToListAsync()*/);
+            return this.View(await applicationDbContext.ToListAsync());
         }
 
         // GET: /Manage/ChangePassword

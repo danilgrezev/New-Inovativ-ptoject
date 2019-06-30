@@ -82,7 +82,7 @@ namespace Backend5.Controllers
                 this.NotFound();
             }
 
-            var userid = Convert.ToInt32(user.Id);
+            //var userid = Convert.ToInt32(user.Id);
 
             if (ModelState.IsValid)
             {
@@ -91,8 +91,7 @@ namespace Backend5.Controllers
                     Name = model.Name,
                     Code = model.Code,
                     CVV = model.CVV,
-                    Date = model.Date,
-                    ApplicationUserId = userid
+                    Date = model.Date
                 };                
 
                 _context.Add(card);
