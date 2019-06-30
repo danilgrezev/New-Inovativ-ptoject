@@ -15,9 +15,24 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> Home()
         {
-
-            return View();
+            return this.View();
         }
+
+        public async Task<IActionResult> Login()
+        {
+            return this.View();
+        }
+
+        public async Task<IActionResult> Register()
+        {
+            return this.View();
+        }
+
+        public async Task<IActionResult> TaskInfo()
+        {
+            return this.View();
+        }
+
     }
 
 }

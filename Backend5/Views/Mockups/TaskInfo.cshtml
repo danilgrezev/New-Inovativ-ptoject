@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "HomeView";
+}
+
+<main role="main" class="container">
+    <div class="jumbotron ti">
+        <h1>Купить кофе</h1>
+        <p class="lead">Купите мне кофе каппучино с 3 пакетиками сахара.</p>
+        <hr />
+        <label>Дата начала -</label> <b>02.03.2016 20:00</b><br /> @*Опциально*@
+        <label>Дата окончания -</label> <b>02.03.2016 21:00</b><br />
+        <h5>Адрес:</h5>
+        <p>
+            <span>Город -</span> <b>Россия, Томск</b><br />
+            <span>Улица -</span> <b>Красногвардейская</b><br />
+            <span>Дом -</span> <b>16</b><span class="ml-3">Квартира -</span> <b>27</b> @*Опциально*@
+        </p>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <form>
+                    <a class="btn btn-lg btn-primary" href="#" role="button">Принять</a>  @*Для исполнителя*@
+                </form>
+                @*<form>
+                    <a class="btn btn-lg btn-danger" href="#" role="button">Отменить</a>  Для заказчика
+                </form>*@
+            </div>
+            <div class="col text-right pt-2 pr-3">
+                <h3>Цена: 100 рублей</h3>
+            </div>
+        </div>
+    </div>
+</main>
