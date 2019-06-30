@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Backend5.Models;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -24,7 +26,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav ml-1">
-                @*@if (User.IsInRole())
+                @if (User.IsInRole(ApplicationRoles.Client))
                 {
                     <li class="nav-item">
                         <a class="nav-link" href="#">Создать задание</a>
@@ -34,11 +36,11 @@
                     </li>
                 }
                 @if (User.IsInRole(ApplicationRoles.Employee))
-                {*@
+                {
                     <li class="nav-item text-right">
                         <a class="nav-link" href="#">Список заданий</a>
                     </li>
-                @*}*@
+                }
             </ul>
             <ul class="navbar-nav mr-4">
                 @if (User.Identity.IsAuthenticated)
@@ -59,12 +61,11 @@
             </ul>
         </div>
     </nav>
-    <div class="body-content">
+    <div class="container body-content mt-4">
         @RenderBody()
-        <footer class="footer container">
+        <footer class="footer">
             <hr />
-            <p class="float-right"><a href="#">Back to top</a></p>
-            <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+            <p>&copy; 2019 - DoNothing</p>
         </footer>
     </div>
 
