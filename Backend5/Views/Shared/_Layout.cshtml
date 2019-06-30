@@ -46,7 +46,14 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="nav-item mr-4">
-                        <span class="navbar-text text-light">@User.Identity.Name</span>
+                        <span class="navbar-text text-light">
+                            <a href="#">@User.Identity.Name</a>
+                        </span>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <span class="navbar-text text-light">
+                            <a href="#">Log out</a>
+                        </span>
                     </li>
                 }
                 else
