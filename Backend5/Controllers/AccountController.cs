@@ -104,8 +104,6 @@ namespace Backend5.Controllers
         }
 
         // POST: /Account/Logout
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await this.signInManager.SignOutAsync();

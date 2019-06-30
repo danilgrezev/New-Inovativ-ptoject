@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MeDo</title>
+    <title>@ViewData["Title"] - ProblemBook</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -45,6 +45,9 @@
             <ul class="navbar-nav mr-4">
                 @if (User.Identity.IsAuthenticated)
                 {
+                <li class="nav-item mr-4">
+                    <a class="nav-link" asp-controller="Account" asp-action="Logout">Выйти</a>
+                </li>
                     <li class="nav-item mr-4">
                         <span class="navbar-text text-light">@User.Identity.Name</span>
                     </li>
