@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Backend5.Models
+@model Backend5.Models.ApplicationUser
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Manage your account";
+}
+
+<h2>@ViewData["Title"].</h2>
+<p class="text-success">@ViewData["StatusMessage"]</p>
+
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Name @User.Identity.Name</dt>
+        @*<dd>
+            <a asp-controller="Manage" asp-action="ChangeName" asp-route-nameId="@UserManager.GetUserName(User)" class="btn-bracketed">Change name</a>
+        </dd>*@
+        <dt>Password:</dt>
+        <dd>
+            <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change password</a>
+        </dd>
+        <dt>Geo location: </dt>
+        <dd>
+            <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change location</a>
+        </dd>
+        <dt>Card:</dt>
+        <dd>
+            @*@foreach (var item in Model.Cards)
+        {
+            <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change location</a>
+        }*@
+        </dd>
+        <dd>
+            <a asp-controller="Cards" asp-action="Create" asp-route-userId="@UserManager.GetUserId(User)" class="btn-bracketed">Add New</a>
+        </dd>
+    </dl>
+</div>

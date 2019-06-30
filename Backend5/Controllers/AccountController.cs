@@ -111,6 +111,45 @@ namespace Backend5.Controllers
             //
         }
 
+        //[HttpGet]
+
+        //public async Task<IActionResult> userAccount(Int32 userId)
+        //{
+        //    // Clear the existing external cookie to ensure a clean login process
+        //    await this.HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+
+        //    //this.ViewData["ReturnUrl"] = returnUrl;
+        //    return this.View();
+        //}
+
+        //// POST: /Account/Login
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> userAccount(LoginViewModel model)
+        //{
+        //    if (this.ModelState.IsValid)
+        //    {
+        //        // This doesn't count login failures towards account lockout
+        //        // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+        //        var result = await this.signInManager.PasswordSignInAsync(model.UserName, model.Password, true, lockoutOnFailure: false);
+        //        if (result.Succeeded)
+        //        {
+        //            return this.Redirect("/Home/Index");
+        //        }
+
+        //        if (result.IsLockedOut)
+        //        {
+        //            return this.View("Lockout");
+        //        }
+
+        //        this.ModelState.AddModelError(String.Empty, "Invalid login attempt.");
+        //        return this.View(model);
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return this.View(model);
+        //}
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)

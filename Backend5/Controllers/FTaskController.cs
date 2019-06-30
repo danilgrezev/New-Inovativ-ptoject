@@ -34,7 +34,7 @@ namespace Backend5.Controllers
             var m = await this._context.Task
                 .Include(x => x.Geo)
                 .Include(x => x.Client).ToListAsync();
-            var d = 4;
+            //var d = 4;
             return View(new TaskOneIdViewModel() {
                 L=m
             });
@@ -45,7 +45,7 @@ namespace Backend5.Controllers
             var m = await this._context.Task
                 .Include(x => x.Geo)
                 .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id== model.Id);
-            var d = 4;
+           // var d = 4;
             return View(m);
         }
 
@@ -61,7 +61,7 @@ namespace Backend5.Controllers
             _context.Update(model);
             await _context.SaveChangesAsync();
 
-            var d = 4;
+            //var d = 4;
             return View(m);
         }
     }
