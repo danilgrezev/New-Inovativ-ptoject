@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "TaskAdd";
+}
+
+<div class="container">
+    <form class="form-add-task mt-3">
+        <h1 class="h3 mb-3 font-weight-normal ml-1">Добавить задание</h1>
+        <label for="inputHeader" class="sr-only">Заголовок</label>
+        <input type="password" id="inputHeader" class="form-control" placeholder="Заголовок" required="" autofocus="">
+        <label for="inputText" class="sr-only">Текст задания</label>
+        <textarea rows="4" id="inputText" class="form-control mb-2" placeholder="Текст задания" required=""></textarea>
+        <label for="inputPrice" class="sr-only">Цена выполнения (в рублях)</label>
+        <input type="number" id="inputPrice" class="form-control" placeholder="Цена выполнения (в рублях)" required="">
+        <label for="inputStartDate">Дата Начала (не обязательно)</label>
+        <input type="date" id="inputStartDate" class="form-control">
+        <input type="time" id="inputStartTime" class="form-control">
+        <label for="inputEndDate">Дата окончания</label>
+        <input type="date" id="inputEndDate" class="form-control" placeholder="Дата окончания" required="">
+        <input type="time" id="inputStartTime" class="form-control">
+        <div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Готово</button>
+        </div>
+    </form>
+</div>

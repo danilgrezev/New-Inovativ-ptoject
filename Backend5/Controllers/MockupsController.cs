@@ -33,6 +33,10 @@ namespace Backend5.Controllers
             return this.View();
         }
 
+        public async Task<IActionResult> TaskAdd()
+        {
+            return this.View();
+        }
     }
 
 }

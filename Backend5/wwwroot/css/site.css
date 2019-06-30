@@ -157,6 +157,23 @@ body {
         max-width: 7rem;
     }
 
+.form-add-task {
+    width: 100%;
+    max-width: 25rem;
+    padding: 15px;
+    margin-top: 6rem;
+    margin-bottom: 7rem;
+}
+
+    .form-add-task input {
+        max-width: 25rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .form-add-task button {
+        max-width: 7rem;
+    }
+
 .ti {
     padding-top: 2rem;
     padding-bottom: 2rem;
