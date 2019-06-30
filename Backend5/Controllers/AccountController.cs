@@ -108,6 +108,7 @@ namespace Backend5.Controllers
         {
             await this.signInManager.SignOutAsync();
             return this.Redirect("/");
+            //
         }
 
         #region Helpers
