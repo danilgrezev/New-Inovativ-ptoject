@@ -12,6 +12,8 @@ namespace Backend5.Models
         public String Text { get; set; }
         public String Status { get; set; }
         public Int32 Priority { get; set; }
+        public Int32? Price { get; set; }
+
         public DateTime? ExecutionTime { get; set; }
         public DateTime? ApplyingTime { get; set; }
 

@@ -26,5 +26,15 @@ namespace Backend5.Controllers
             var d = 4;
             return View(m);
         }
+
+
+        public async Task<IActionResult> GetOne(Int32 id)
+        {
+            var m = await this._context.Task
+                .Include(x => x.Geo)
+                .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id==id);
+            var d = 4;
+            return View(m);
+        }
     }
 }
