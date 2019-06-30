@@ -33,7 +33,7 @@ namespace Backend5.Controllers
         {
             var m = await this._context.Task
                 .Include(x => x.Geo)
-                .Include(x => x.Client).ToListAsync();
+                .Include(x => x.Client).Where(x=>x.Status=="Новый").ToListAsync();
             return View(new TaskOneIdViewModel() {
                 L=m
             });
@@ -56,6 +56,7 @@ namespace Backend5.Controllers
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
 
             m.EmployeeId = user.Id;
+            m.Status = "В работе";
             _context.Update(m);
             await _context.SaveChangesAsync();
 
