@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend5.Data;
+using Backend5.Models;
+using Backend5.Models.MyViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,15 +26,25 @@ namespace Backend5.Controllers
                 .Include(x => x.Geo)
                 .Include(x => x.Client).ToListAsync();
             var d = 4;
-            return View(m);
+            return View(new TaskOneIdViewModel() {
+                L=m
+            });
         }
 
-
-        public async Task<IActionResult> GetOne(Int32 id)
+        public async Task<IActionResult> GetOne(TaskOneIdViewModel model)
         {
             var m = await this._context.Task
                 .Include(x => x.Geo)
-                .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id==id);
+                .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id== model.Id);
+            var d = 4;
+            return View(m);
+        }
+
+        public async Task<IActionResult> Apply(MyTask model)
+        {
+            var m = await this._context.Task
+                .Include(x => x.Geo)
+                .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id == model.Id);
             var d = 4;
             return View(m);
         }

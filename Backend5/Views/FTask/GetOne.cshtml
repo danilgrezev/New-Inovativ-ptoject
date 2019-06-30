@@ -1,0 +1,30 @@
+﻿@model Backend5.Models.MyTask
+
+@{
+    ViewData["Title"] = "IndexId";
+}
+
+    <form asp-controller="FTask" asp-action="Apply">
+
+        <main role="main" class="container">
+            <div class="jumbotron ti">
+                <h1>@Model.Header</h1>
+                <p class="lead">@Model.Text</p>
+                <hr />
+             <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+                <p>
+                    @Model.Price
+                </p>
+                <hr />
+                <div class="row">
+                    <div class="col">
+                            <button class="btn btn-lg btn-primary" type="submit">Принять</button>
+                    </div>
+                    <div class="col text-right pt-2 pr-3">
+                        <h3>Цена: 100 рублей</h3>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </form>

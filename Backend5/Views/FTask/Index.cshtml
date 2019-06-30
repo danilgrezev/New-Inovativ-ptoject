@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Backend5.Models.MyTask>
+﻿@model Backend5.Models.MyViewModels.TaskOneIdViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,15 +6,16 @@
 
 <h2>Index</h2>
 
-@foreach (var i in Model)
+@foreach (var i in Model.L)
 {
     <div class="jumbotron ti">
         <h1>@i.Header</h1>
         <hr />
         <div class="row">
             <div class="col">
-                <form asp-controller="FTask" asp-action="IndexId">
-                    <button type="submit" class="btn btn-lg btn-primary" asp-route-id="@i.Id">Подробно</button>
+                <form asp-controller="FTask" asp-action="GetOne">
+                    <input asp-for="@Model.Id" value="@i.Id"/>
+                    <button type="submit" class="btn btn-lg btn-primary">Подробно</button>
                 </form>
               
             </div>
