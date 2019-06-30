@@ -14,6 +14,20 @@
     <Compile Remove="Migrations\20170607065708_AddLabs.Designer.cs" />
     <Compile Remove="Migrations\20170607065744_AddHospitalLabs.cs" />
     <Compile Remove="Migrations\20170607065744_AddHospitalLabs.Designer.cs" />
+    <Compile Remove="Migrations\20190628143138_OneBigMigration.cs" />
+    <Compile Remove="Migrations\20190628143138_OneBigMigration.Designer.cs" />
+    <Compile Remove="Migrations\20190630100715_IdentityUserClaims.cs" />
+    <Compile Remove="Migrations\20190630100715_IdentityUserClaims.Designer.cs" />
+    <Compile Remove="Migrations\20190630102240_Mig01.cs" />
+    <Compile Remove="Migrations\20190630102240_Mig01.Designer.cs" />
+    <Compile Remove="Migrations\20190630102606_Mig02.cs" />
+    <Compile Remove="Migrations\20190630102606_Mig02.Designer.cs" />
+    <Compile Remove="Migrations\20190630112919_Mig06.cs" />
+    <Compile Remove="Migrations\20190630112919_Mig06.Designer.cs" />
+    <Compile Remove="Migrations\20190630113238_Mig07.cs" />
+    <Compile Remove="Migrations\20190630113238_Mig07.Designer.cs" />
+    <Compile Remove="Migrations\20190630124010_Mig08.cs" />
+    <Compile Remove="Migrations\20190630124010_Mig08.Designer.cs" />
   </ItemGroup>
 
     <ItemGroup>

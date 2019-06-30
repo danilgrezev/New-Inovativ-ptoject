@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Backend5.Migrations
 {
-    public partial class OneBigMigration : Migration
+    public partial class Mig00 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,47 @@ namespace Backend5.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Geos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IdentityRoles",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    NormalizedName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IdentityUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityUserClaims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IdentityUserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(nullable: false),
+                    RoleId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityUserRoles", x => new { x.UserId, x.RoleId });
                 });
 
             migrationBuilder.CreateTable(
@@ -161,24 +202,22 @@ namespace Backend5.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateTime = table.Column<DateTime>(nullable: false),
-                    RecipientId = table.Column<int>(nullable: false),
-                    RecipientId1 = table.Column<string>(nullable: true),
-                    SenderId = table.Column<int>(nullable: false),
-                    SenderId1 = table.Column<string>(nullable: true),
+                    RecipientId = table.Column<string>(nullable: true),
+                    SenderId = table.Column<string>(nullable: true),
                     Text = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_ApplicationUsers_RecipientId1",
-                        column: x => x.RecipientId1,
+                        name: "FK_Comments_ApplicationUsers_RecipientId",
+                        column: x => x.RecipientId,
                         principalTable: "ApplicationUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Comments_ApplicationUsers_SenderId1",
-                        column: x => x.SenderId1,
+                        name: "FK_Comments_ApplicationUsers_SenderId",
+                        column: x => x.SenderId,
                         principalTable: "ApplicationUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -191,10 +230,8 @@ namespace Backend5.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ApplyingTime = table.Column<DateTime>(nullable: false),
-                    ClientId = table.Column<int>(nullable: false),
-                    ClientId1 = table.Column<string>(nullable: true),
-                    EmployeeId = table.Column<int>(nullable: false),
-                    EmployeeId1 = table.Column<string>(nullable: true),
+                    ClientId = table.Column<string>(nullable: true),
+                    EmployeeId = table.Column<string>(nullable: true),
                     ExecutionTime = table.Column<DateTime>(nullable: false),
                     GeoId = table.Column<int>(nullable: false),
                     Header = table.Column<string>(nullable: true),
@@ -208,14 +245,14 @@ namespace Backend5.Migrations
                 {
                     table.PrimaryKey("PK_Task", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Task_ApplicationUsers_ClientId1",
-                        column: x => x.ClientId1,
+                        name: "FK_Task_ApplicationUsers_ClientId",
+                        column: x => x.ClientId,
                         principalTable: "ApplicationUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Task_ApplicationUsers_EmployeeId1",
-                        column: x => x.EmployeeId1,
+                        name: "FK_Task_ApplicationUsers_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "ApplicationUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -265,24 +302,24 @@ namespace Backend5.Migrations
                 column: "ApplicationUserId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_RecipientId1",
+                name: "IX_Comments_RecipientId",
                 table: "Comments",
-                column: "RecipientId1");
+                column: "RecipientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_SenderId1",
+                name: "IX_Comments_SenderId",
                 table: "Comments",
-                column: "SenderId1");
+                column: "SenderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_ClientId1",
+                name: "IX_Task_ClientId",
                 table: "Task",
-                column: "ClientId1");
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_EmployeeId1",
+                name: "IX_Task_EmployeeId",
                 table: "Task",
-                column: "EmployeeId1");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Task_GeoId",
@@ -310,6 +347,15 @@ namespace Backend5.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "IdentityRoles");
+
+            migrationBuilder.DropTable(
+                name: "IdentityUserClaims");
+
+            migrationBuilder.DropTable(
+                name: "IdentityUserRoles");
 
             migrationBuilder.DropTable(
                 name: "Task");

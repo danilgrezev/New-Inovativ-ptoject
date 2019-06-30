@@ -11,8 +11,8 @@ using System;
 namespace Backend5.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190630112919_Mig06")]
-    partial class Mig06
+    [Migration("20190630132612_Mig00")]
+    partial class Mig00
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -123,21 +123,17 @@ namespace Backend5.Migrations
 
                     b.Property<DateTime>("DateTime");
 
-                    b.Property<int>("RecipientId");
+                    b.Property<string>("RecipientId");
 
-                    b.Property<string>("RecipientId1");
-
-                    b.Property<int>("SenderId");
-
-                    b.Property<string>("SenderId1");
+                    b.Property<string>("SenderId");
 
                     b.Property<string>("Text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipientId1");
+                    b.HasIndex("RecipientId");
 
-                    b.HasIndex("SenderId1");
+                    b.HasIndex("SenderId");
 
                     b.ToTable("Comments");
                 });
@@ -180,13 +176,9 @@ namespace Backend5.Migrations
 
                     b.Property<DateTime>("ApplyingTime");
 
-                    b.Property<int>("ClientId");
+                    b.Property<string>("ClientId");
 
-                    b.Property<string>("ClientId1");
-
-                    b.Property<int>("EmployeeId");
-
-                    b.Property<string>("EmployeeId1");
+                    b.Property<string>("EmployeeId");
 
                     b.Property<DateTime>("ExecutionTime");
 
@@ -206,9 +198,9 @@ namespace Backend5.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId1");
+                    b.HasIndex("ClientId");
 
-                    b.HasIndex("EmployeeId1");
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("GeoId");
 
@@ -241,6 +233,22 @@ namespace Backend5.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserTypes");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NormalizedName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -306,22 +314,22 @@ namespace Backend5.Migrations
                 {
                     b.HasOne("Backend5.Models.ApplicationUser", "Recipient")
                         .WithMany()
-                        .HasForeignKey("RecipientId1");
+                        .HasForeignKey("RecipientId");
 
                     b.HasOne("Backend5.Models.ApplicationUser", "Sender")
                         .WithMany()
-                        .HasForeignKey("SenderId1");
+                        .HasForeignKey("SenderId");
                 });
 
             modelBuilder.Entity("Backend5.Models.MyTask", b =>
                 {
                     b.HasOne("Backend5.Models.ApplicationUser", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientId1");
+                        .HasForeignKey("ClientId");
 
                     b.HasOne("Backend5.Models.ApplicationUser", "Employee")
                         .WithMany()
-                        .HasForeignKey("EmployeeId1");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("Backend5.Models.Geo", "Geo")
                         .WithMany("MyTasks")
