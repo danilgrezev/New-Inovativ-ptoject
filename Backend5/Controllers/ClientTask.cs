@@ -7,6 +7,7 @@ using Backend5.Models;
 using Backend5.Models.MyViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend5.Controllers
@@ -49,6 +50,39 @@ namespace Backend5.Controllers
             await _context.SaveChangesAsync();
 
             return this.Redirect("/Home/Index");
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            var fff = await this._context.TaskTypes.Select(x => x.Type).ToListAsync();
+
+            List<SelectListItem> l = new List<SelectListItem>();
+            for (int i = 0; i < fff.Count; i++)
+            {
+                l.Add(new SelectListItem() { Text = fff[i], Value = i.ToString() });
+            }
+
+            this.ViewBag.TaskTypeId = new SelectList(l, "Value", "Text");
+
+            return this.View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(ClientCreateTaskModel m)
+        {
+            var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+
+            _context.Add(new MyTask() {
+                Header = m.Header,
+                Price=m.Price,
+                ClientId= user.Id,
+                GeoId=1,
+                Priority=1,
+                Status = "Новый",
+                TaskTypeId=Int32.Parse(m.TaskTypeId)+1,
+                Text=m.Text
+            });
+            await _context.SaveChangesAsync();
+            return Redirect("/FTask");
         }
 
         /*  public async Task<IActionResult> GetOne(TaskOneIdViewModel model)
