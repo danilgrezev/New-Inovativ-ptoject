@@ -1,5 +1,12 @@
 ﻿@using Backend5.Models;
 
+@using Microsoft.AspNetCore.Identity
+@using Backend5.Models
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +26,17 @@
     </environment>
 </head>
 <body>
+
+
+
+    @{
+
+//var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+
+    }
+
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" asp-controller="Home" asp-action="Index">ProblemBook</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,18 +44,18 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav ml-1">
-                @*@if (ViewData["F"] != null)
-                {
-                    if ((int)ViewData["F"] == 1)
-                    {*@
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="ClientTask" asp-action="Create">Создать задание</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="ClientTask" asp-action="Index">Мои задания</a>
-                    </li>
-                    @*}
-                }*@
+                @if (ViewData["F"] != null)
+                    {
+                        if ((int)ViewData["F"] == 1)
+                        {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="ClientTask" asp-action="Create">Создать задание</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="ClientTask" asp-action="Index">Мои задания</a>
+                </li>
+                }
+                    }
                 @if (true)
                 {
                     <li class="nav-item text-right">
@@ -47,25 +65,25 @@
             </ul>
             <ul class="navbar-nav mr-4">
                 @*@if (User.Identity.IsAuthenticated)
-        {
-            <li class="nav-item mr-4">
-                <a >
-                    <span class="navbar-text text-light">@User.Identity.Name</span>
-                </a>
-            </li>
-            <li class="nav-item mr-4">
-                <a class="nav-link" asp-controller="Account" asp-action="Logout">Log out</a>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Account" asp-action="Register">Зарегистрироваться</a>
-            </li>
-        }*@
+                    {
+                        <li class="nav-item mr-4">
+                            <a >
+                                <span class="navbar-text text-light">@User.Identity.Name</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mr-4">
+                            <a class="nav-link" asp-controller="Account" asp-action="Logout">Log out</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Войти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">Зарегистрироваться</a>
+                        </li>
+                    }*@
 
                 @await Html.PartialAsync("_LoginPartial")
             </ul>
