@@ -13,27 +13,27 @@ namespace Backend5.Controllers
     public class MockupsController : Controller
     {
 
-        public async Task<IActionResult> Home()
+        public IActionResult Home()
         {
             return this.View();
         }
 
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             return this.View();
         }
 
-        public async Task<IActionResult> Register()
+        public IActionResult Register()
         {
             return this.View();
         }
 
-        public async Task<IActionResult> TaskInfo()
+        public IActionResult TaskInfo()
         {
             return this.View();
         }
 
-        public async Task<IActionResult> TaskAdd()
+        public IActionResult TaskAdd()
         {
             return this.View();
         }

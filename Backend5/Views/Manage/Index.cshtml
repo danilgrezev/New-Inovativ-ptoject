@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Backend5.Models
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Manage your account";
+}
+
+<h2>@ViewData["Title"].</h2>
+<p class="text-success">@ViewData["StatusMessage"]</p>
+
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Name @User.Identity.Name</dt>
+        @*<dd>
+            <a asp-controller="Manage" asp-action="ChangeName" asp-route-nameId="@UserManager.GetUserName(User)" class="btn-bracketed">Change name</a>
+        </dd>*@
+        
+        <dd>
+            <button type="submit" class="btn btn-md btn-primary" asp-controller="Manage" asp-action="ChangePassword">Change password</button>
+            <hr />
+        </dd>
+        @*<dt>Geo location: </dt>
+        <dd>
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-3 col-md-2">
+                    <p></p>
+                </div>
+            }
+            <a href="#" class="btn-bracketed">Change location</a>
+        </dd>
+        <dt>Email: </dt>
+        <dd>
+            @foreach (var item in Model.ApplicationUser)
+            {
+                <div class="col-xs-3 col-md-2">
+                    <p></p>
+                </div>
+            }
+            <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change location</a>
+        </dd>*@
+        <dt>Card:</dt>
+        <dd>
+            @foreach (var item in Model)
+            {                
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Owner name: </label>
+                            <output>@item.Name</output>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputPassword4">Number card: </label>
+                            <output>@item.Code</output>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAddress">Date: </label>
+                        <output>@item.Date</output>
+                    </div>                   
+                </form>
+                <hr />
+            }
+        </dd>
+        <dd>
+            <button asp-controller="Cards" asp-action="Create" asp-route-userId="@UserManager.GetUserId(User)" type="submit" class="btn btn-md btn-primary">Add new card</button>
+            <br />
+        </dd>
+    </dl>
+</div>

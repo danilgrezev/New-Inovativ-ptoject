@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Backend5.Data;
 using Backend5.Models;
+using Backend5.Models.MyViewModels;
 
 namespace Backend5.Controllers
 {
@@ -44,9 +45,22 @@ namespace Backend5.Controllers
         }
 
         // GET: Cards/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(String userId)
         {
-            return View();
+            if (userId == null)
+            {
+                return this.NotFound();
+            }
+            var user = await this._context.ApplicationUsers
+               .SingleOrDefaultAsync(m => m.Id == userId);
+
+            if (user == null)
+            {
+                return this.NotFound();
+            }
+
+            this.ViewBag.User = user;
+            return View(new CardEditModel());
         }
 
         // POST: Cards/Create
@@ -54,15 +68,38 @@ namespace Backend5.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,Date,Name,CVV,ApplicationUserId")] Card card)
+        public async Task<IActionResult> Create(String userId, CardEditModel model)
         {
+            if (userId == null)
+            {
+                this.NotFound();
+            }           
+
+            var user = await this._context.ApplicationUsers
+                .SingleOrDefaultAsync(m => m.Id == userId);
+            if (user == null)
+            {
+                this.NotFound();
+            }
+
+            //var userid = Convert.ToInt32(user.Id);
+
             if (ModelState.IsValid)
             {
+                var card = new Card
+                {
+                    Name = model.Name,
+                    Code = model.Code,
+                    CVV = model.CVV,
+                    Date = model.Date
+                };                
+
                 _context.Add(card);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Manage");
             }
-            return View(card);
+            this.ViewBag.User = user;
+            return View(model);
         }
 
         // GET: Cards/Edit/5
