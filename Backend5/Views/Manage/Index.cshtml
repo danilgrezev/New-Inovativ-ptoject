@@ -19,9 +19,9 @@
         @*<dd>
             <a asp-controller="Manage" asp-action="ChangeName" asp-route-nameId="@UserManager.GetUserName(User)" class="btn-bracketed">Change name</a>
         </dd>*@
-        
+
         <dd>
-            <button type="submit" class="btn btn-md btn-primary" asp-controller="Manage" asp-action="ChangePassword">Change password</button>
+            <a class="btn btn-md btn-primary" asp-controller="Manage" asp-action="ChangePassword">Change password</a>
             <hr />
         </dd>
         @*<dt>Geo location: </dt>
@@ -44,10 +44,13 @@
             }
             <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change location</a>
         </dd>*@
-        <dt>Card:</dt>
+        <dt>Cards:</dt>
+        <hr />
+
         <dd>
             @foreach (var item in Model)
-            {                
+            {
+              
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-3">
@@ -62,13 +65,13 @@
                     <div class="form-group">
                         <label for="inputAddress">Date: </label>
                         <output>@item.Date</output>
-                    </div>                   
+                    </div>
                 </form>
                 <hr />
             }
         </dd>
         <dd>
-            <button asp-controller="Cards" asp-action="Create" asp-route-userId="@UserManager.GetUserId(User)" type="submit" class="btn btn-md btn-primary">Add new card</button>
+            <a asp-controller="Cards" asp-action="Create" asp-route-userId="@UserManager.GetUserId(User)" class="btn btn-md btn-primary">Add new card</a>
             <br />
         </dd>
     </dl>
