@@ -61,7 +61,7 @@ namespace Backend5.Controllers
             _context.Update(m);
             await _context.SaveChangesAsync();
 
-            return this.Redirect("/Home/Index");
+            return this.Redirect("/ClientTask/Index");
         }
 
         public async Task<IActionResult> Create()

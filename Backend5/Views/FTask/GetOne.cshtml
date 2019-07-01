@@ -17,17 +17,14 @@
                 <hr />
                 <div class="row">
                     <div class="col">
-                        @if (ViewData["F"] == null)
-                        {
-                            <button class="btn btn-lg btn-primary" type="submit">Принять</button>
-                        }
-                        else
+                        @if (ViewData["F"] != null)
                         {
                             if ((int)ViewData["F"] == 2)
                             {
                                 <button class="btn btn-lg btn-primary" type="submit">Принять</button>
                             }
                         }
+
                     </div>
                     <div class="col text-right pt-2 pr-3">
                         <h3>Цена: @Model.Price рублей</h3>
