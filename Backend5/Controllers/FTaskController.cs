@@ -31,6 +31,12 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> Index()
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             var m = await this._context.Task
                 .Include(x => x.Geo)
                 .Include(x => x.Client).Where(x=>x.Status=="Новый").ToListAsync();
@@ -41,6 +47,12 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> GetOne(TaskOneIdViewModel model)
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             var m = await this._context.Task
                 .Include(x => x.Geo)
                 .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id== model.Id);
@@ -49,6 +61,12 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> Apply(MyTask model)
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             var m = await this._context.Task
                 .Include(x => x.Geo)
                 .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id == model.Id);

@@ -32,6 +32,12 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> Index()
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
             ViewData["F"] = user.UserTypeId;
             var m = await this._context.Task.Where(x => x.ClientId == user.Id).ToListAsync();
@@ -41,6 +47,12 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> Delete(TaskOneIdViewModel model)
         {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = user.UserTypeId;
+            }
+            catch { }
             var m = await this._context.Task
               .Include(x => x.Geo)
               .Include(x => x.Client).FirstOrDefaultAsync(x => x.Id == model.Id);
@@ -54,6 +66,12 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> Create()
         {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = user.UserTypeId;
+            }
+            catch { }
             var fff = await this._context.TaskTypes.Select(x => x.Type).ToListAsync();
 
             List<SelectListItem> l = new List<SelectListItem>();
@@ -69,6 +87,12 @@ namespace Backend5.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ClientCreateTaskModel m)
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             var user = await this.userManager.GetUserAsync(this.HttpContext.User);
 
             _context.Add(new MyTask() {

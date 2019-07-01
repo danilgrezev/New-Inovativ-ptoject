@@ -31,6 +31,12 @@ namespace Backend5.Controllers
 
         public async Task<IActionResult> Login(String returnUrl = null)
         {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = user.UserTypeId;
+            }
+            catch { }
             // Clear the existing external cookie to ensure a clean login process
             await this.HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
@@ -43,6 +49,12 @@ namespace Backend5.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = user.UserTypeId;
+            }
+            catch { }
             if (this.ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -69,8 +81,14 @@ namespace Backend5.Controllers
         // GET: /Account/Register
         [HttpGet]
 
-        public IActionResult Register(String returnUrl = null)
+        public async Task<IActionResult > Register(String returnUrl = null)
         {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = user.UserTypeId;
+            }
+            catch { }
             this.ViewData["ReturnUrl"] = returnUrl;
             return this.View();
         }
@@ -79,6 +97,12 @@ namespace Backend5.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = user.UserTypeId;
+            }
+            catch { }
             if (this.ModelState.IsValid)
             {
                 var user = new ApplicationUser {
@@ -106,6 +130,12 @@ namespace Backend5.Controllers
         // POST: /Account/Logout
         public async Task<IActionResult> Logout()
         {
+            try
+            {
+                var user = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = user.UserTypeId;
+            }
+            catch { }
             await this.signInManager.SignOutAsync();
             return this.Redirect("/");
             //

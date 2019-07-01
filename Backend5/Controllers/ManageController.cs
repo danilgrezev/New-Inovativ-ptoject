@@ -42,6 +42,12 @@ namespace Backend5.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(ManageMessageId? message = null)
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             var applicationDbContext = _context.Cards
                 .Include(f => f.ApplicationUser);
 
@@ -61,8 +67,14 @@ namespace Backend5.Controllers
 
         // GET: /Manage/ChangePassword
         [HttpGet]
-        public IActionResult ChangePassword()
+        public async Task<IActionResult > ChangePassword()
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             return this.View();
         }
 
@@ -71,6 +83,12 @@ namespace Backend5.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             if (!this.ModelState.IsValid)
             {
                 return this.View(model);
@@ -97,8 +115,14 @@ namespace Backend5.Controllers
 
         // GET: /Manage/ChangeName
         [HttpGet]
-        public IActionResult ChangeName(String nameId)
+        public async Task<IActionResult> ChangeName(String nameId)
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             this.ViewBag.ChangeNameId = nameId;
             return this.View();
         }
@@ -108,6 +132,12 @@ namespace Backend5.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangeName(ChangeNameViewModel model)
         {
+            try
+            {
+                var userforid = await this.userManager.GetUserAsync(this.HttpContext.User);
+                ViewData["F"] = userforid.UserTypeId;
+            }
+            catch { }
             if (!this.ModelState.IsValid)
             {
                 return this.View(model);
